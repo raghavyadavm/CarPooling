@@ -67,7 +67,7 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>
                 </div>
-                <font color="red" style="font-family:  monospace;">
+                <font color="red" style="font-family: monospace;">
                 <%
                     if(request.getAttribute("msg")!=null){
                        out.println(request.getAttribute("msg"));
