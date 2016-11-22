@@ -12,6 +12,9 @@
 function Redirect() {
     window.location="Register.jsp";
  }
+function validateLogin()
+{    
+}
 </script>
 </head>
 <body>
@@ -21,7 +24,7 @@ function Redirect() {
         <br /><br /><br />
 <div align="center">
             <div align="center">
-                <form action="home.jsp" method="post" onsubmit="return validateLogin()">
+                <form action="Home.jsp" method="post" onsubmit="return validateLogin()">
                     <table align="center">
                         <tr>
                             <td><label>Username</label></td>
