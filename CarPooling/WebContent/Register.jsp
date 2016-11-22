@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="bootstrap/css/demo.css" />
 <link rel="stylesheet" type="text/css"
 	href="bootstrap/css/component.css" />
-<title>Register</title>
+<title>Register </title>
 
 <meta name="description" content="">
 <!-- Latest compiled and minified CSS -->
