@@ -45,7 +45,7 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
-            <form class="form-horizontal" role="form">
+            <form action="Home.jsp" class="form-horizontal" role="form">
                 <h2>Login</h2>
                  <div class="form-group">
                     <label for="userName" class="col-sm-3 control-label">User Name</label>
