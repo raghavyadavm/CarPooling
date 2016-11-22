@@ -53,19 +53,14 @@ public class login extends HttpServlet {
     	     {
     	    	
     	    	 if(r.getString(1).equals(name) && r.getString(2).equals(pass)){
-    	    		 if(r.getString(3).equals("admin")){
+    	    		{
     	    			 
     	    			  HttpSession session=request.getSession();  
     	    		        session.setAttribute("uname",r.getString(1));  
     	    		        session.setMaxInactiveInterval(60);
-    	    		    response.sendRedirect("welcomeAdmin.jsp");
+    	    		    response.sendRedirect("profile.jsp");
     	    		 }
-    	    		 else{
-    	    			 HttpSession session=request.getSession();  
- 	    		        session.setAttribute("uname",r.getString(1));  
- 	    		        session.setMaxInactiveInterval(60);
-    	    			 response.sendRedirect("Profile.jsp");
-    	    		 }
+    	    		 
     	    	 }
     	    	 
     	     }

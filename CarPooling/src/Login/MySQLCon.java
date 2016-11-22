@@ -12,7 +12,7 @@ public class MySQLCon {
 			// step2 create the connection object
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/carpool_db", "root", "root");
 
-			System.out.println("Connection is established");
+			System.out.println("Connection is  established");
 			return con;
 
 			// step5 close the connection object
