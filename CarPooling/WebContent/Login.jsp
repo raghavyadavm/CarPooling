@@ -3,70 +3,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="icon" type="image/png" href="images/favicon-32x32.png"
-	sizes="32x32" />
-<link rel="icon" type="image/png" href="images/favicon-16x16.png"
-	sizes="16x16" />
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-.
-<link rel="stylesheet" type="text/css"
-	href="bootstrap/css/normalize.css" />
-<link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="bootstrap/css/demo.css" />
-<link rel="stylesheet" type="text/css"
-	href="bootstrap/css/component.css" />
-<title>Login </title>
-
-<meta name="description" content="">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-<script type="text/javascript">
-	$(function() {
-
-		$('*:[unselectable=on]').mousedown(function(event) {
-
-			event.preventDefault();
-			return false;
-		});
-	});
-</script>
-
-<!-- Latest compiled and minified JavaScript -->
-<script
-	src="https://maxcdn.
-bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<title>CarPool</title>
+        <link href="stylesheets/public.css" media="all" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="javascript/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="javascript/jquery-migrate-1.2.1.min.js"></script> <!-- Need this for jquery 1.9+ so that old apps/features are supported -->
+        <script type="text/javascript" src="javascript/scripts.js"></script>
 
 </head>
 <body>
-<div class="container">
-            <form action="Home.jsp" class="form-horizontal" role="form">
-                <h2>Login</h2>
-                 <div class="form-group">
-                    <label for="userName" class="col-sm-3 control-label">User Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="userName" placeholder="User Name" class="form-control" autofocus>
+<br /><br /><br />
+        <h1>CAR-POOL</h1>
+        <h2>Simple car pooling site for corporates</h2>
+        <br /><br /><br />
+<div align="center">
+            <div align="center">
+                <form action="home.jsp" method="post" onsubmit="return validateLogin()">
+                    <table align="center">
+                        <tr>
+                            <td><label>Username</label></td>
+                            <td> </td>
+                            <td><input type="text" name="username" value="" id="username" placeholder="Your username" /></td>
+                        </tr>
+                        <tr></tr><tr></tr><tr></tr><tr></tr>
+                        <tr>
+                            <td><label>Password</label></td>
+                            <td>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</td>
+                            <td><input type="password" name="password" value=""  id="password" placeholder="Your password" /></td>
+                        </tr>
+                    </table>
+                    <br />
+                    <div style="width:175px" align="center" >
+                        <input style="width:85;float:left" type="submit" name="login" value="LogIn" id="login"></input>
+                        <input style="width:85;float:right" type="reset" name="reset" value="Reset" id="reset"></input>
+                    </div>
                         
+                </form>
+            </div>
+
+            <br />
+            <div align="center">
+                <input style="width:175px" type="button" id="showReg" class="showReg" value="Create my account"/>
+                <div>
+                    <br/>
+                    <div id="registrationForm">
                     </div>
+                        
                 </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password</label>
-                    <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div>
-                </div>
-            </form> <!-- /form -->
-        </div> <!-- ./container -->
+            </div>
+        </div>
 </body>
 </html>
