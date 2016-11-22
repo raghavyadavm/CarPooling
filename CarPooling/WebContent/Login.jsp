@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@page import="java.io.Console"%>
+<%@ page language="java" import="Login.login"  contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -50,7 +51,7 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
                  <div class="form-group">
                     <label for="userName" class="col-sm-3 control-label">User Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="userName" placeholder="User Name" class="form-control" autofocus>
+                        <input type="text" id="username" placeholder="User Name" class="form-control" autofocus>
                         
                     </div>
                 </div>
@@ -66,6 +67,14 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
                         <button type="submit" class="btn btn-primary btn-block">Login</button>
                     </div>
                 </div>
+                <font color="red" style="font-family:  monospace;">
+                <%
+                    if(request.getAttribute("msg")!=null){
+                       out.println(request.getAttribute("msg"));
+                    }
+                                    
+                %>
+                 </font>
             </form> <!-- /form -->
         </div> <!-- ./container -->
 </body>
