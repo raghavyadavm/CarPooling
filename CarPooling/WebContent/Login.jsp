@@ -8,7 +8,11 @@
         <script type="text/javascript" src="javascript/jquery-1.11.1.min.js"></script>
         <script type="text/javascript" src="javascript/jquery-migrate-1.2.1.min.js"></script> <!-- Need this for jquery 1.9+ so that old apps/features are supported -->
         <script type="text/javascript" src="javascript/scripts.js"></script>
-
+<script type="text/javascript">
+function Redirect() {
+    window.location="Register.jsp";
+ }
+</script>
 </head>
 <body>
 <br /><br /><br />
@@ -42,7 +46,7 @@
 
             <br />
             <div align="center">
-                <input style="width:175px" type="button" id="showReg" class="showReg" value="Create my account"/>
+                <input style="width:175px" type="button" id="showReg" class="showReg" value="Create my account" onclick="Redirect();"/>
                 <div>
                     <br/>
                     <div id="registrationForm">
