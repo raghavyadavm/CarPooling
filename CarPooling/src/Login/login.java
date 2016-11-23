@@ -33,52 +33,7 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-       String name=request.getParameter("username");
-       String pass=request.getParameter("password");
-       PrintWriter p1=response.getWriter();
-       p1.println(name);
-       p1.println(pass);
-       try{
-    	   
-    	     Connection con=MySQLCon.main(null);
-    	    
-    	  
-    	     String sql="select * from users;";
-     	     PreparedStatement p=con.prepareStatement(sql);
-    	     
-    	     ResultSet r=p.executeQuery();
-    	    
-    	     while(r.next())
-    	     {
-    	    	
-    	    	 if(r.getString(1).equals(name) && r.getString(2).equals(pass)){
-    	    		{
-    	    			 
-    	    			  HttpSession session=request.getSession();  
-    	    		        session.setAttribute("uname",r.getString(1));  
-    	    		        session.setMaxInactiveInterval(60);
-    	    		    response.sendRedirect("profile.jsp");
-    	    		 }
-    	    		 
-    	    	 }
-    	    	 
-    	     }
-    	     request.setAttribute("msg", " Enter valid username Or Password");
-    	     RequestDispatcher rd=request.getRequestDispatcher("Login.jsp");  
-    	     rd.forward(request, response); 
-    	     
-       }
-       catch(NullPointerException n)
-       {
-    	   n.printStackTrace();
-    	  
-       }
-       catch (Exception e) {
-    	  
-		// TODO: handle exception
-    	   e.printStackTrace();
-	}
+		
 	}
 
 	/**
@@ -86,6 +41,59 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub
+	       String name=request.getParameter("username");
+	       String pass=request.getParameter("password");
+	       PrintWriter p1=response.getWriter();
+	       System.out.println(name+" name");
+	       System.out.println(pass+" pass");
+	       p1.println(name);
+	       p1.println(pass);
+	       try{
+	    	   
+	    	     Connection con=MySQLCon.main(null);
+	    	    
+	    	  
+	    	     String sql="select * from users;";
+	     	     PreparedStatement p=con.prepareStatement(sql);
+	    	     
+	    	     ResultSet r=p.executeQuery();
+	    	    
+	    	     while(r.next())
+	    	     {
+	    	    	 System.out.println(r.getString(1)+" r.getString(1)");
+	     	    	 System.out.println(r.getString(2)+" r.getString(2)");
+	    	    	
+	    	    	 if(r.getString(1).equals(name) && r.getString(2).equals(pass)){
+	    	    		{
+	    	    			 
+	    	    			  HttpSession session=request.getSession();  
+	    	    		        session.setAttribute("uname",r.getString(1));  
+	    	    		        session.setMaxInactiveInterval(60);
+	    	    		    response.sendRedirect("Register.jsp");
+	    	    		 }
+	    	    		 
+	    	    	 } 
+	    	    		
+	    	    	 
+	    	     }
+	    	     request.setAttribute("msg", " Enter valid username Or Password");
+	    	     RequestDispatcher rd=request.getRequestDispatcher("Login.jsp");  
+	    	     rd.forward(request, response); 
+	    	
+	    	    
+	    	     
+	       }
+	       catch(NullPointerException n)
+	       {
+	    	   n.printStackTrace();
+	    	  
+	       }
+	       catch (Exception e) {
+	    	  
+			// TODO: handle exception
+	    	   e.printStackTrace();
+		}
 	}
 
 }

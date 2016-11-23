@@ -1,6 +1,6 @@
 <%@page import="java.io.Console"%>
-<%@ page language="java" import="Login.login"  contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="Login.*"
+	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" href="images/favicon-16x16.png"
 	sizes="16x16" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-.
+
 <link rel="stylesheet" type="text/css"
 	href="bootstrap/css/normalize.css" />
 <link rel="stylesheet" type="text/css"
@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="bootstrap/css/demo.css" />
 <link rel="stylesheet" type="text/css"
 	href="bootstrap/css/component.css" />
-<title>Login </title>
+<title>Login</title>
 
 <meta name="description" content="">
 <!-- Latest compiled and minified CSS -->
@@ -45,37 +45,38 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 </head>
 <body>
-<div class="container">
-            <form class="form-horizontal" role="form">
-                <h2>Login</h2>
-                 <div class="form-group">
-                    <label for="userName" class="col-sm-3 control-label">User Name</label>
-                    <div class="col-sm-9">
-                        <input type="text" id="username" placeholder="User Name" class="form-control" autofocus>
-                        
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-3 control-label">Password</label>
-                    <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="col-sm-9 col-sm-offset-3">
-                        <button type="submit" class="btn btn-primary btn-block">Login</button>
-                    </div>
-                </div>
-                <font color="red" style="font-family: monospace;">
-                <%
-                    if(request.getAttribute("msg")!=null){
-                       out.println(request.getAttribute("msg"));
-                    }
-                                    
-                %>
-                 </font>
-            </form> <!-- /form -->
-        </div> <!-- ./container -->
+	<div class="container">
+		<form class="form-horizontal" role="form" action="<%=application.getContextPath() %>/login" method ="post">
+			<h2 align="center">Login</h2>
+			<div class="form-group">
+				<label for="username" class="col-sm-3 control-label">User
+					Name</label>
+				<div class="col-sm-9">
+					<input type="text" id="username" name="username" placeholder="User Name"
+						class="form-control" autofocus>
+
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="password" class="col-sm-3 control-label">Password</label>
+				<div class="col-sm-9">
+					<input type="password" id="password" name="password" placeholder="Password"
+						class="form-control">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div class="col-sm-9 col-sm-offset-3">
+					<button type="submit" value="Login" class="btn btn-primary btn-block">Login</button>
+				</div>
+			</div>
+			<font color="red" style="font-family: monospace;"> <%
+				if(request.getAttribute("msg")!=null){
+				out.println(request.getAttribute("msg")); } %> 
+			</font>
+		</form>
+		<!-- /form -->
+	</div>
+	<!-- ./container -->
 </body>
 </html>
