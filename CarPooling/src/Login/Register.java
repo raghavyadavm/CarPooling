@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.Timestamp;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,16 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class login
+ * Servlet implementation class Register
  */
-@WebServlet("/login")
-public class login extends HttpServlet {
+@WebServlet("/register")
+public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public login() {
+    public Register() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,8 @@ public class login extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -41,47 +42,42 @@ public class login extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-	       String name=request.getParameter("username");
-	       String pass=request.getParameter("password");
+		   String username=request.getParameter("username");
+	       String firstname=request.getParameter("firstname");
+	       String email=request.getParameter("email");
+	       String phoneno=request.getParameter("phoneno");
+	       String password=request.getParameter("password");
+	       String gender=request.getParameter("gender");
 	       
-	       System.out.println(name+" name");
-	       System.out.println(pass+" pass");
-	 
+	       
+	       
+	       System.out.println(gender+" gender");
+	       System.out.println(password+" password");
+	      
 	       try{
 	    	   
 	    	     Connection con=MySQLCon.main(null);
 	    	    
 	    	  
-	    	     String sql="select * from users;";
+	    	     String sql="insert into users values(?,?,?,?,?,?,?,?);";
 	     	     PreparedStatement p=con.prepareStatement(sql);
 	    	     
-	    	     ResultSet r=p.executeQuery();
-	    	    
-	    	     while(r.next())
-	    	     {
-	    	    	 System.out.println(r.getString(1)+" r.getString(1)");
-	     	    	 System.out.println(r.getString(2)+" r.getString(2)");
-	    	    	
-	    	    	 if(r.getString(1).equals(name) && r.getString(2).equals(pass)){
-	    	    		{
-	    	    			 
-	    	    			  HttpSession session=request.getSession();  
-	    	    		        session.setAttribute("uname",r.getString(1));  
-	    	    		        session.setMaxInactiveInterval(60);
-	    	    		    response.sendRedirect("Register.jsp");
-	    	    		 }
-	    	    		 
-	    	    	 } 
-	    	    		
-	    	    	 
-	    	     }
-	    	     request.setAttribute("msg", " Enter valid username Or Password");
-	    	     RequestDispatcher rd=request.getRequestDispatcher("Login.jsp");  
-	    	     rd.forward(request, response); 
-	    	
-	    	    
+	    	     p.setString(1, username);
+	    	     p.setString(2, password);
+	    	     p.setString(3, firstname);
+	    	     p.setString(4, phoneno);
+	    	     p.setString(5, email);
+	    	     p.setString(6, gender);
+	    	     Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+	    	     p.setTimestamp(7, timestamp);
+	    	     p.setTimestamp(8, timestamp);
 	    	     
+	    	     p.executeUpdate();
+		 		 System.out.println("Record is inserted into DBUSER table!");
+		 		 response.sendRedirect("Login.jsp");
+		    	   
+	    	    
+	    	   
 	       }
 	       catch(NullPointerException n)
 	       {

@@ -45,19 +45,19 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form"action="<%=application.getContextPath() %>/register" method ="post">
                 <h2>Registration Form</h2>
                  <div class="form-group">
                     <label for="userName" class="col-sm-3 control-label">User Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="userName" placeholder="User Name" class="form-control" autofocus>
+                        <input type="text" id="userName" name="username" placeholder="User Name" class="form-control" autofocus>
                         
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="firstName" class="col-sm-3 control-label">Full Name</label>
                     <div class="col-sm-9">
-                        <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
+                        <input type="text" id="firstName" name="firstname" placeholder="Full Name" class="form-control" autofocus>
                         
                     </div>
                 </div>
@@ -65,19 +65,19 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
                 <div class="form-group">
                     <label for="email" class="col-sm-3 control-label">Email</label>
                     <div class="col-sm-9">
-                        <input type="email" id="email" placeholder="Email" class="form-control">
+                        <input type="email" id="email" name="email" placeholder="Email" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="phoneNo" class="col-sm-3 control-label">Phone Number</label>
                     <div class="col-sm-9">
-                        <input type="number" id="phoneNo" placeholder="Phone Number" class="form-control">
+                        <input type="number" id="phoneNo" name="phoneno" placeholder="Phone Number" class="form-control">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="password" class="col-sm-3 control-label">Password</label>
                     <div class="col-sm-9">
-                        <input type="password" id="password" placeholder="Password" class="form-control">
+                        <input type="password" id="password" name="password" placeholder="Password" class="form-control">
                     </div>
                 </div>
                 
@@ -88,12 +88,12 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
                         <div class="row">
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="femaleRadio" value="Female">Female
+                                    <input type="radio" id="femaleRadio" name="gender" value="Female">Female
                                 </label>
                             </div>
                             <div class="col-sm-4">
                                 <label class="radio-inline">
-                                    <input type="radio" id="maleRadio" value="Male">Male
+                                    <input type="radio" id="maleRadio" name="gender" value="Male">Male
                                 </label>
                             </div>
                            
