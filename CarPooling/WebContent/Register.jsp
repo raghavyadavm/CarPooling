@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="images/favicon-16x16.png"
 	sizes="16x16" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-.
+
 <link rel="stylesheet" type="text/css"
 	href="bootstrap/css/normalize.css" />
 <link rel="stylesheet" type="text/css"
@@ -16,6 +16,11 @@
 <link rel="stylesheet" type="text/css" href="bootstrap/css/demo.css" />
 <link rel="stylesheet" type="text/css"
 	href="bootstrap/css/component.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+
+</script>	
 <title>Register </title>
 
 <meta name="description" content="">
@@ -37,6 +42,49 @@
 	});
 </script>
 
+
+<!-- Validation script -->
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+
+				$('#contact-form').validate(
+						{
+							rules : {
+								username : {
+									minlength : 4,
+									required : true
+								},
+								
+								password : {
+									minlength : 6,
+									required : true
+								},
+								email: {
+					                required: true,
+					                email: true
+					            },
+					            phoneno: {
+					            	required: true,
+					            	minlength : 10
+					            }
+					            
+							},
+							highlight : function(element) {
+								$(element).closest('.form-group')
+										.removeClass('success').addClass(
+												'error');
+							},
+							success : function(element) {
+								element.text('OK!').addClass('valid').closest(
+										'.form-group').removeClass('error')
+										.addClass('success');
+							}
+						});
+
+			});
+</script>
+
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.
@@ -45,7 +93,7 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="container">
-            <form class="form-horizontal" role="form"action="<%=application.getContextPath() %>/register" method ="post">
+            <form class="form-horizontal" id="contact-form" role="form" action="<%=application.getContextPath() %>/register" method ="post">
                 <h2>Registration Form</h2>
                  <div class="form-group">
                     <label for="userName" class="col-sm-3 control-label">User Name</label>

@@ -10,13 +10,12 @@
 	sizes="16x16" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
-<link rel="stylesheet" type="text/css"
-	href="bootstrap/css/normalize.css" />
+
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="bootstrap/css/demo.css" />
-<link rel="stylesheet" type="text/css"
-	href="bootstrap/css/component.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
 <title>Login</title>
 
 <meta name="description" content="">
@@ -37,7 +36,40 @@
 		});
 	});
 </script>
+<!-- Validation script -->
+<script type="text/javascript">
+	$(document).ready(
+			function() {
 
+				$('#contact-form').validate(
+						{
+							rules : {
+								username : {
+									minlength : 4,
+									required : true
+								},
+								
+								password : {
+									minlength : 6,
+									required : true
+								}
+							},
+							highlight : function(element) {
+								$(element).closest('.form-group')
+										.removeClass('success').addClass(
+												'error');
+							},
+							success : function(element) {
+								element.text('OK!').addClass('valid').closest(
+										'.form-group').removeClass('error')
+										.addClass('success');
+							}
+						});
+
+			});
+</script>
+<script
+	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script
 	src="https://maxcdn.
@@ -46,33 +78,42 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="container">
-		<form class="form-horizontal" role="form" action="<%=application.getContextPath() %>/login" method ="post">
+		<form class="form-horizontal" role="form" id="contact-form"
+			action="<%=application.getContextPath()%>/login" method="post">
 			<h2 align="center">Login</h2>
 			<div class="form-group">
-				<label for="username" class="col-sm-3 control-label">User
+				<label for="username" class="col-sm-4 control-label">User
 					Name</label>
-				<div class="col-sm-9">
-					<input type="text" id="username" name="username" placeholder="User Name"
-						class="form-control" autofocus>
+				<div class="col-sm-5">
+					<input type="text" id="username" name="username"
+						placeholder="User Name" class="form-control" autofocus>
 
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="password" class="col-sm-3 control-label">Password</label>
-				<div class="col-sm-9">
-					<input type="password" id="password" name="password" placeholder="Password"
-						class="form-control">
+				<label for="password" class="col-sm-4 control-label">Password</label>
+				<div class="col-sm-5">
+					<input type="password" id="password" name="password"
+						placeholder="Password" class="form-control">
 				</div>
 			</div>
 
 			<div class="form-group">
-				<div class="col-sm-9 col-sm-offset-3">
-					<button type="submit" value="Login" class="btn btn-primary btn-block">Login</button>
+				<div class="col-sm-2 col-sm-offset-4">
+					<button type="submit" value="Login"
+						class="btn btn-primary btn-block btn-lg">Login</button>
+				</div>
+			
+				<div class="col-sm-2">
+					<a
+						class="btn btn-primary btn-block btn-lg" href="<%=application.getContextPath()%>/Register.jsp">Register</a>
 				</div>
 			</div>
 			<font color="red" style="font-family: monospace;"> <%
-				if(request.getAttribute("msg")!=null){
-				out.println(request.getAttribute("msg")); } %> 
+ 	if (request.getAttribute("msg") != null) {
+ 		out.println(request.getAttribute("msg"));
+ 	}
+ %>
 			</font>
 		</form>
 		<!-- /form -->
