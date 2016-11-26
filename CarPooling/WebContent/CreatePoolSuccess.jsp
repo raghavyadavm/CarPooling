@@ -25,7 +25,7 @@
 
     <div id="wrapper">
 
-       <!-- Sidebar -->
+        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
@@ -56,14 +56,15 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
+        
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
            	 <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Pool Menu</a>	
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1>Register Vehicle</h1>
-                        <p>Vehicle is successfully registered!!</p>
+                        <h1>Create Pool</h1>
+                        <p>Pool is successfully created!!</p>
                         
                     </div>
                 </div>

@@ -32,25 +32,30 @@
                     <a id="Profile" href="<%=application.getContextPath()%>/Profile.jsp">Profile</a>
                 </li>
                 <li>
-                	<a id="viewPoolMenu" href="pool.php?op=view">View Pools</a>
+                	<a id="viewPoolMenu" href="<%=application.getContextPath()%>/ViewPool.jsp">View Pools</a>
                 </li>
                 <li>
-                   <a id="createPoolMenu" href="pool.php?op=create">Create Pool</a>
+                   <a id="createPoolMenu" href="<%=application.getContextPath()%>/CreatePool.jsp">Create Pool</a>
+                </li>
+                <li>
+                    <a id="joinPoolMenu" href="<%=application.getContextPath()%>/JoinPool.jsp">Join Pool</a>
                 </li>
                 <li>
                     <a id="editPoolMenu" href="pool.php?op=edit">My Pools</a>
                 </li>
+                
                 <li>
                     <a id="regVehicleMenu" href="<%=application.getContextPath()%>/RegisterVehicle.jsp">Register Vehicle</a>
                 </li>
                 <li>
                     <a id="myVehicleMenu" href="<%=application.getContextPath()%>/MyVehicle.jsp">My Vehicles</a>
                 </li>
-                
+                 <li>
+                    <a id="logout" href="<%=application.getContextPath()%>/Logout.jsp">Logout</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">

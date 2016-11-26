@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,16 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class VehicleRegister
+ * Servlet implementation class CreatePool
  */
-@WebServlet("/VehicleRegister")
-public class VehicleRegister extends HttpServlet {
+@WebServlet("/CreatePool")
+public class CreatePool extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VehicleRegister() {
+    public CreatePool() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -42,35 +45,43 @@ public class VehicleRegister extends HttpServlet {
 		// TODO Auto-generated method stub
 		   HttpSession session=request.getSession();  
 		   String username=(String) session.getAttribute("uname");
-	       String model=request.getParameter("model");
-	       String color=request.getParameter("color");
-	       String registrationno=request.getParameter("registrationno");
-	       String occupancy=request.getParameter("occupancy");
-	      
+		   String starttime=request.getParameter("starttime");
+	       String from=request.getParameter("from");
+	       String to=request.getParameter("to");
+	       String via=request.getParameter("via");
+	       String vehicle=request.getParameter("vehicle");
+	       int occupancy=Integer.parseInt(request.getParameter("occupancy"));
+	       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	       Date date = null;
+		try {
+			date = simpleDateFormat.parse(starttime);
+		} catch (ParseException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	       
-	       
-	       
-	       System.out.println(username+"username");
-	       System.out.println(model+" model");
 	      
 	       try{
 	    	   
 	    	     Connection con=MySQLCon.main(null);
 	    	    
 	    	  
-	    	     String sql="insert into vehicles (uid,model,color,regNo,occupancy) values(?,?,?,?,?);";
+	    	     String sql="INSERT INTO pools (owner,startTime,startFrom,upTo,via,vehicle,occupancy,availability) VALUES(?,?,?,?,?,?,?,?);";
 	     	     PreparedStatement p=con.prepareStatement(sql);
 	    	     
 	    	     p.setString(1, username);
-	    	     p.setString(2, model);
-	    	     p.setString(3, color);
-	    	     p.setString(4, registrationno);
-	    	     p.setString(5, occupancy);    	    
-	    	   
+	    	     Timestamp timestamp = new Timestamp(date.getTime());
+	    	     p.setTimestamp(2, timestamp);
+	    	     p.setString(3, from);
+	    	     p.setString(4, to);
+	    	     p.setString(5, via);
+	    	     p.setString(6, vehicle);
+	    	     p.setInt(7, occupancy);
+	    	     p.setInt(8, occupancy);
 	    	     
 	    	     p.executeUpdate();
-		 		 System.out.println("Record is inserted into Vehicles table!");
-		 		 response.sendRedirect("RegisterVehicleSuccess.jsp");
+		 		 System.out.println("Record is inserted into Pool table!");
+		 		 response.sendRedirect("CreatePoolSuccess.jsp");
 		    	   
 	    	    
 	    	   

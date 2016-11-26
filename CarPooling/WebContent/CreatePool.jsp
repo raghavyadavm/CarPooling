@@ -12,41 +12,38 @@
 <meta name="author" content="">
 
 <title>Car Pool</title>
-<link rel="icon" type="image/png" href="images/favicon-32x32.png"
-	sizes="32x32" />
-<link rel="icon" type="image/png" href="images/favicon-16x16.png"
-	sizes="16x16" />
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<link rel="stylesheet" type="text/css"
-	href="bootstrap/css/normalize.css" />
-<link rel="stylesheet" type="text/css"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-<link rel="stylesheet" type="text/css" href="bootstrap/css/demo.css" />
-<link rel="stylesheet" type="text/css"
-	href="bootstrap/css/component.css" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
-<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
-
-</script>
 
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom CSS -->
 <link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+	$(function() {
+		$("#datepicker").datepicker();
+	});
+</script>
 
 
+</script>
 </head>
 
 <body>
 
-	<div id="wrapper">
+    <div id="wrapper">
 
-		 <!-- Sidebar -->
+        <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
@@ -78,48 +75,62 @@
         </div>
         <!-- /#sidebar-wrapper -->
 
-		<!-- Page Content -->
+       <!-- Page Content -->
 		<div id="page-content-wrapper">
 		 <div class="container-fluid">
 			<div class="container">
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Pool Menu</a>	
 				<form class="form-horizontal" id="contact-form" role="form"
-					action="<%=application.getContextPath() %>/VehicleRegister" method="post">
+					action="<%=application.getContextPath() %>/CreatePool" method="post">
 					<h2 align="center">Register Vehicle</h2>
 					<div class="form-group">
-						<label for="model" class="col-sm-3 control-label">Model</label>
+						<label for="starttime" class="col-sm-3 control-label">Start Time</label>
 						<div class="col-sm-7">
-							<input type="text" id="model" name="model"
-								placeholder="Vehicle Model" class="form-control" autofocus>
+							<input type="text" id="starttime" name="starttime"
+								placeholder="Starting Location"  class="form-control"  >
+
+						</div>
+					</div>		
+					<div class="form-group">
+						<label for="from" class="col-sm-3 control-label">From</label>
+						<div class="col-sm-7">
+							<input type="text" id="from" name="from"
+								placeholder="Starting Location" class="form-control" >
 
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="color" class="col-sm-3 control-label">Color</label>
-						<div class="col-sm-7">
-							<input type="text" id="color" name="color"
-								placeholder="Vehicle Color" class="form-control" autofocus>
-
-						</div>
-					</div>
 
 					<div class="form-group">
-						<label for="registrationno" class="col-sm-3 control-label">Registration No</label>
+						<label for="to" class="col-sm-3 control-label">To</label>
 						<div class="col-sm-7">
-							<input type="text" id="registrationno" name="registrationno" placeholder="Reg #(ex. MS AD 104)"
+							<input type="text" id="to" name="to" placeholder="Destination"
 								class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="via" class="col-sm-3 control-label">Via</label>
+						<div class="col-sm-7">
+							<input type="text" id="via" name="via"
+								placeholder="Passing Through" class="form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="vehicle" class="col-sm-3 control-label">Vehicle</label>
+						<div class="col-sm-7">
+							<input type="text" id="vehicle" name="vehicle"
+								placeholder="Passing Through" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="occupancy" class="col-sm-3 control-label">Occupancy</label>
 						<div class="col-sm-7">
 							<input type="number" id="occupancy" name="occupancy"
-								placeholder="occupancy (Excluding Driver)" class="form-control">
+								placeholder="can take(excluding you)" class="form-control">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-sm-7 col-sm-offset-3">
-							<button type="submit" class="btn btn-primary btn-block">Register</button>
+							<button type="submit" class="btn btn-primary btn-block">Create</button>
 						</div>
 					</div>
 				</form>
@@ -133,11 +144,7 @@
 	</div>
 	<!-- /#wrapper -->
 
-	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
-
-	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	
 
 	<!-- Menu Toggle Script -->
 	<script>
