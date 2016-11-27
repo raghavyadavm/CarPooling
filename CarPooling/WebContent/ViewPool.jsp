@@ -85,6 +85,7 @@
 	   	     Connection con=MySQLCon.main(null);
 	   	     
 	   	     String username=(String) session.getAttribute("uname");
+	   	  	 System.out.println(username+" username");
 	   		 String sql="SELECT owner,poolId,startTime,startFrom,upTo,via,vehicle,availability FROM pools ORDER BY availability DESC;";
 		     PreparedStatement p=con.prepareStatement(sql);
 	   	    
