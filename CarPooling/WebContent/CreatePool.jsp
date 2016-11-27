@@ -1,5 +1,8 @@
+<%@page import="Login.MySQLCon"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@page import="java.sql.*"%>
+<%@page import="java.io.Console"%>	
 
 <html>
 <head>
@@ -107,28 +110,52 @@
 								class="form-control">
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="via" class="col-sm-3 control-label">Via</label>
-						<div class="col-sm-7">
-							<input type="text" id="via" name="via"
-								placeholder="Passing Through" class="form-control">
+						<div class="form-group">
+							<label for="via" class="col-sm-3 control-label">Via</label>
+							<div class="col-sm-7">
+								<input type="text" id="via" name="via"
+									placeholder="Passing Through" class="form-control">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="vehicleid" class="col-sm-3 control-label">Vehicle ID</label>
-						<div class="col-sm-7">
-							<input type="text" id="vehicleid" name="vehicleid"
-								placeholder="Passing Through" class="form-control">
+						<div class="form-group">
+							<label class="col-sm-3 control-label" for="vehicle">Vehicle</label>
+							<div class="col-sm-7">
+								<select class="selectpicker form-control"
+									
+									id="vehicle" required="true" name="vehicleid">
+									<option style="cursor: pointer;">Select Vehicle</option>
+									<%
+										try {
+
+											int count = 0, flag = 0;
+											Connection con = MySQLCon.main(null);
+											String username=(String) session.getAttribute("uname");
+											String sql2 = "SELECT vid FROM carpool_db.vehicles where uid ='"+username+"';";
+											PreparedStatement p2 = con.prepareStatement(sql2);
+											ResultSet r1 = p2.executeQuery();
+											while (r1.next()) {
+									%>
+									<option style="cursor: pointer;"><%=r1.getString(1)%></option>
+									<%
+										}
+
+										} catch (Exception e) {
+											e.printStackTrace();
+										}
+									%>
+
+								</select>
+
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
-						<label for="occupancy" class="col-sm-3 control-label">Occupancy</label>
-						<div class="col-sm-7">
-							<input type="number" id="occupancy" name="occupancy"
-								placeholder="can take(excluding you)" class="form-control">
+						<div class="form-group">
+							<label for="occupancy" class="col-sm-3 control-label">Occupancy</label>
+							<div class="col-sm-7">
+								<input type="number" id="occupancy" name="occupancy"
+									placeholder="can take(excluding you)" class="form-control">
+							</div>
 						</div>
-					</div>
-					<div class="form-group">
+						<div class="form-group">
 						<div class="col-sm-7 col-sm-offset-3">
 							<button type="submit" class="btn btn-primary btn-block">Create</button>
 						</div>

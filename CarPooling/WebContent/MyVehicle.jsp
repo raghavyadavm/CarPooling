@@ -2,7 +2,11 @@
 <%@page import="java.io.Console"%>
 <%@ page language="java" import="Login.MySQLCon"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<% if(session.getAttribute("uname")!=null)
+{
+    
 
+%>
 <html>
 <head>
 
@@ -68,6 +72,7 @@
 				 <table class="table table-bordered">
 		    		<thead>
 				      <tr>
+				        <th>Vehicle ID</th>
 				        <th>Model</th>
 				        <th>Color</th>
 				        <th>Registration No</th>
@@ -90,9 +95,10 @@
 		     ResultSet r=p.executeQuery();
 	 	    
 			     while(r.next()){
+			    	 out.println("<td>"+r.getString(1)+"</td>");
 			    	 out.println("<td>"+r.getString(3)+"</td>");			    	 
 		 	    	 out.println("<td>"+r.getString(4)+"</td>");
-		 	    	 out.println("<td>"+r.getString(5)+"</td>");
+		 	    	 out.println("<td>"+r.getString(5)+"</td>");		 	    	 
 		 	    	 out.println("<td>"+r.getString(6)+"</td> </tr>");
 			     } 
 	        } catch(NullPointerException n) {
@@ -132,3 +138,12 @@
 </body>
 
 </html>
+<% }
+else
+{
+     
+      response.sendRedirect("breaksession.jsp");
+
+ 
+}
+%>

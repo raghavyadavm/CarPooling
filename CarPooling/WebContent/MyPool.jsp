@@ -2,7 +2,11 @@
 <%@page import="java.io.Console"%>
 <%@ page language="java" import="Login.MySQLCon"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<% if(session.getAttribute("uname")!=null)
+{
+    
 
+%>
 <html>
 <head>
 
@@ -62,7 +66,7 @@
 			<div class="container-fluid">
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Pool
 					Menu</a><br>
-				<h2 align="center">My Pools</h2>	
+				<h2 align="center">Pools Joined</h2>	
 				 <table class="table table-bordered">
 		    		<thead>
 				      <tr>
@@ -97,8 +101,78 @@
 		 	    	 out.println("<td>"+r.getString(4)+"</td>");
 		 	    	 out.println("<td>"+r.getString(5)+"</td>");
 		 	    	 out.println("<td>"+r.getString(6)+"</td>");
-		 	    	 out.println("<td>"+r.getString(7)+"</td>");
+		 	    	 
+		 	    	 String vehiclesql="SELECT model FROM carpool_db.vehicles where vid = "+r.getString(7)+";";
+				     PreparedStatement p1=con.prepareStatement(vehiclesql);
+				     ResultSet r1=p1.executeQuery();
+				     while(r1.next()){
+				    	 out.println("<td>"+ r1.getString(1)+"</td>");
+				     }
+				    
+		 	    	 
 		 	    	 out.println("<td>"+r.getString(8)+"</td> </tr>");
+			     } 
+	        } catch(NullPointerException n) {
+		   	   n.printStackTrace();
+		   	  
+		      } catch (Exception e) {
+		   	  
+				// TODO: handle exception
+		   	   e.printStackTrace();
+			}
+	     
+        %>
+  
+			    </tbody>
+		  </table>	
+		 <!-- Created pools --> 
+		 <h2 align="center">Pools Created</h2>
+		   <table class="table table-bordered">
+		    		<thead>
+				      <tr>
+				        <th>Owner</th>
+				        <th>Start Time</th>
+				        <th>From</th>
+						<th>To</th>
+						<th>Via</th>
+						<th>Vehicle</th>
+						<th>Availability</th>				        
+				      </tr>
+			    	</thead>
+			      <tbody>
+				      <tr>
+				 													
+
+		<%
+	        try{
+		    	   
+	   	     Connection con=MySQLCon.main(null);
+	   	     
+	   	     String username=(String) session.getAttribute("uname");
+	   	  	 System.out.println(username+" username");
+	   		 String sql="SELECT owner, startTime,startFrom,upTo,via,vehicle,availability FROM pools WHERE owner = '"+username+"' ORDER BY availability DESC;";
+		     PreparedStatement p=con.prepareStatement(sql);
+	   	    
+		     ResultSet r=p.executeQuery();
+	 	    
+			     while(r.next()){
+			    	 out.println("<td>You</td>");
+			    	 out.println("<td>"+r.getString(2)+"</td>");
+			    	 out.println("<td>"+r.getString(3)+"</td>");
+		 	    	 out.println("<td>"+r.getString(4)+"</td>");
+		 	    	 out.println("<td>"+r.getString(5)+"</td>");
+		 	    	
+		 	    	 
+		 	    	 String vehiclesql="SELECT model FROM carpool_db.vehicles where vid = "+r.getString(6)+";";
+				     PreparedStatement p1=con.prepareStatement(vehiclesql);
+				     ResultSet r1=p1.executeQuery();
+				    
+				     while(r1.next()){
+				    	 System.out.println("vehicle "+r1.getString(1));
+				    	 out.println("<td>"+ r1.getString(1)+"</td>");
+				     }
+				    
+		 	    	 out.println("<td>"+r.getString(7)+"</td> </tr>");
 			     } 
 	        } catch(NullPointerException n) {
 		   	   n.printStackTrace();
@@ -137,3 +211,12 @@
 </body>
 
 </html>
+<% }
+else
+{
+     
+      response.sendRedirect("breaksession.jsp");
+
+ 
+}
+%>

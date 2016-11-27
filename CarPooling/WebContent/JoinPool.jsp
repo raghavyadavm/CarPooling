@@ -2,7 +2,11 @@
 <%@page import="java.io.Console"%>
 <%@ page language="java" import="Login.MySQLCon"
 	contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<% if(session.getAttribute("uname")!=null)
+{
+    
 
+%>
 <html>
 <head>
 
@@ -138,3 +142,12 @@
 </body>
 
 </html>
+<% }
+else
+{
+     
+      response.sendRedirect("breaksession.jsp");
+
+ 
+}
+%>
