@@ -41,7 +41,7 @@
                     <a id="joinPoolMenu" href="<%=application.getContextPath()%>/JoinPool.jsp">Join Pool</a>
                 </li>
                 <li>
-                    <a id="editPoolMenu" href="pool.php?op=edit">My Pools</a>
+                    <a id="editPoolMenu" href="<%=application.getContextPath()%>/MyPool.jsp">My Pools</a>
                 </li>
                 
                 <li>

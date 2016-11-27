@@ -49,7 +49,7 @@ public class CreatePool extends HttpServlet {
 	       String from=request.getParameter("from");
 	       String to=request.getParameter("to");
 	       String via=request.getParameter("via");
-	       String vehicle=request.getParameter("vehicle");
+	       String vehicleid=request.getParameter("vehicleid");
 	       int occupancy=Integer.parseInt(request.getParameter("occupancy"));
 	       SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	       Date date = null;
@@ -75,7 +75,7 @@ public class CreatePool extends HttpServlet {
 	    	     p.setString(3, from);
 	    	     p.setString(4, to);
 	    	     p.setString(5, via);
-	    	     p.setString(6, vehicle);
+	    	     p.setString(6, vehicleid);
 	    	     p.setInt(7, occupancy);
 	    	     p.setInt(8, occupancy);
 	    	     

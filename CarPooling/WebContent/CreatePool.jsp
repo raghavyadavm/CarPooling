@@ -59,7 +59,7 @@
                     <a id="joinPoolMenu" href="<%=application.getContextPath()%>/JoinPool.jsp">Join Pool</a>
                 </li>
                 <li>
-                    <a id="editPoolMenu" href="pool.php?op=edit">My Pools</a>
+                    <a id="editPoolMenu" href="<%=application.getContextPath()%>/MyPool.jsp">My Pools</a>
                 </li>
                 
                 <li>
@@ -115,9 +115,9 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="vehicle" class="col-sm-3 control-label">Vehicle</label>
+						<label for="vehicleid" class="col-sm-3 control-label">Vehicle ID</label>
 						<div class="col-sm-7">
-							<input type="text" id="vehicle" name="vehicle"
+							<input type="text" id="vehicleid" name="vehicleid"
 								placeholder="Passing Through" class="form-control">
 						</div>
 					</div>

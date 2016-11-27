@@ -27,8 +27,7 @@
 <body>
 
 	<div id="wrapper">
-
-		 <!-- Sidebar -->
+  <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
@@ -59,19 +58,21 @@
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
 				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Pool
 					Menu</a><br>
-				<h2 align="center">My Vehicles</h2>	
+				<h2 align="center">Available Pools</h2>	
 				 <table class="table table-bordered">
 		    		<thead>
 				      <tr>
-				        <th>Model</th>
-				        <th>Color</th>
-				        <th>Registration No</th>
-				        <th>Occupancy</th>
+				        <th>Owner</th>
+				        <th>Start Time</th>
+				        <th>From</th>
+						<th>To</th>
+						<th>Via</th>
+						<th>Vehicle</th>
+						<th>Availability</th>				        
 				      </tr>
 			    	</thead>
 			      <tbody>
@@ -84,16 +85,21 @@
 	   	     Connection con=MySQLCon.main(null);
 	   	     
 	   	     String username=(String) session.getAttribute("uname");
-	   		 String sql="select * from vehicles where uid = '"+username+"';";
+	   	  	 System.out.println(username+" username");
+	   		 String sql="SELECT owner,poolId,startTime,startFrom,upTo,via,vehicle,availability FROM pools Where availability > 0 and owner !='"+username+"'and poolId not in(SELECT pools.poolId FROM pools,pools_users_membership WHERE pools.poolId=pools_users_membership.poolId AND pools_users_membership.username='"+username+"');";
+
 		     PreparedStatement p=con.prepareStatement(sql);
 	   	    
 		     ResultSet r=p.executeQuery();
 	 	    
 			     while(r.next()){
-			    	 out.println("<td>"+r.getString(3)+"</td>");			    	 
+			    	 out.println("<td>"+r.getString(1)+"</td>");
+			    	 out.println("<td>"+r.getString(3)+"</td>");
 		 	    	 out.println("<td>"+r.getString(4)+"</td>");
 		 	    	 out.println("<td>"+r.getString(5)+"</td>");
-		 	    	 out.println("<td>"+r.getString(6)+"</td> </tr>");
+		 	    	 out.println("<td>"+r.getString(6)+"</td>");
+		 	    	 out.println("<td>"+r.getString(7)+"</td>");
+		 	    	 out.println("<td><a href= '/CarPooling/JoinPool?poolid="+r.getString(2)+"'>"+r.getString(8)+"</td> </a></tr>");
 			     } 
 	        } catch(NullPointerException n) {
 		   	   n.printStackTrace();
