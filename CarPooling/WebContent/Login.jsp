@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" href="images/favicon-16x16.png"
 	sizes="16x16" />
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link rel="stylesheet" type="text/css"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -36,7 +36,7 @@
 		});
 	});
 </script>
-<!-- Validation script -->
+<!-- Validation script 
 <script type="text/javascript">
 	$(document).ready(
 			function() {
@@ -67,7 +67,7 @@
 						});
 
 			});
-</script>
+</script>-->
 <script
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>
 <!-- Latest compiled and minified JavaScript -->
