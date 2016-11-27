@@ -64,7 +64,7 @@
         <!-- /#sidebar-wrapper -->
 		<div id="page-content-wrapper">
 			<div class="container-fluid">
-				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Pool
+				<a href="#menu-toggle" style="background-color:black;color:white;" class="btn btn-default" id="menu-toggle">Pool
 					Menu</a><br>
 				<h2 align="center">All Pools</h2>	
 				 <table class="table table-bordered">

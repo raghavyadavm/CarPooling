@@ -86,7 +86,8 @@
 		<div id="page-content-wrapper">
 		 <div class="container-fluid">
 			<div class="container">
-				<a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Pool Menu</a>	
+				<a href="#menu-toggle" style="background-color:black;color:white;" class="btn btn-default" id="menu-toggle">Pool
+					Menu</a><br>	
 				<form class="form-horizontal" id="contact-form" role="form"
 					action="<%=application.getContextPath() %>/VehicleRegister" method="post">
 					<h2 align="center">Register Vehicle</h2>
