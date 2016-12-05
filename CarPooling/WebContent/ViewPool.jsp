@@ -101,7 +101,13 @@
 		 	    	 out.println("<td>"+r.getString(4)+"</td>");
 		 	    	 out.println("<td>"+r.getString(5)+"</td>");
 		 	    	 out.println("<td>"+r.getString(6)+"</td>");
-		 	    	 out.println("<td>"+r.getString(7)+"</td>");
+
+		 	    	 String vehiclesql="SELECT model FROM carpool_db.vehicles where vid = "+r.getString(7)+";";
+				     PreparedStatement p1=con.prepareStatement(vehiclesql);
+				     ResultSet r1=p1.executeQuery();
+				     while(r1.next()){
+				    	 out.println("<td>"+ r1.getString(1)+"</td>");
+				     }
 		 	    	 out.println("<td>"+r.getString(8)+"</td> </tr>");
 			     } 
 	        } catch(NullPointerException n) {

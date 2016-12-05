@@ -94,7 +94,7 @@ bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <body>
 <div class="container">
             <form class="form-horizontal" id="contact-form" role="form" action="<%=application.getContextPath() %>/register" method ="post">
-                <h2>Registration Form</h2>
+                <h2 align="center">Registration Form</h2>
                  <div class="form-group">
                     <label for="userName" class="col-sm-3 control-label">User Name</label>
                     <div class="col-sm-9">

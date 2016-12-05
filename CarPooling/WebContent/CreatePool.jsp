@@ -94,7 +94,7 @@
 						<label for="starttime" class="col-sm-3 control-label">Start Time</label>
 						<div class="col-sm-7">
 							<input type="text" id="starttime" name="starttime"
-								placeholder="Starting Location"  class="form-control"  >
+								placeholder="Starting Time(ex: 2016-01-01 01:01:00)"  class="form-control"  >
 
 						</div>
 					</div>		
@@ -134,12 +134,12 @@
 											int count = 0, flag = 0;
 											Connection con = MySQLCon.main(null);
 											String username=(String) session.getAttribute("uname");
-											String sql2 = "SELECT vid FROM carpool_db.vehicles where uid ='"+username+"';";
+											String sql2 = "SELECT vid, model FROM carpool_db.vehicles where uid ='"+username+"';";
 											PreparedStatement p2 = con.prepareStatement(sql2);
 											ResultSet r1 = p2.executeQuery();
 											while (r1.next()) {
 									%>
-									<option style="cursor: pointer;"><%=r1.getString(1)%></option>
+									<option style="cursor: pointer;" value =<%=r1.getString(1)%>><%=r1.getString(2)%></option>
 									<%
 										}
 
