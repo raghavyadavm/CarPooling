@@ -66,7 +66,7 @@
 			<div class="container-fluid">
 				<a href="#menu-toggle" style="background-color:black;color:white;" class="btn btn-default" id="menu-toggle">Pool
 					Menu</a><br>
-				<h2 align="center">Available Pools</h2>	
+				<h2 align="center">Join Pools</h2>	
 				 <table class="table table-bordered">
 		    		<thead>
 				      <tr>

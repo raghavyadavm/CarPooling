@@ -89,7 +89,7 @@
 					Menu</a><br>	
 				<form class="form-horizontal" id="contact-form" role="form"
 					action="<%=application.getContextPath() %>/CreatePool" method="post">
-					<h2 align="center">Register Vehicle</h2>
+					<h2 align="center">Create Pool</h2>
 					<div class="form-group">
 						<label for="starttime" class="col-sm-3 control-label">Start Time</label>
 						<div class="col-sm-7">

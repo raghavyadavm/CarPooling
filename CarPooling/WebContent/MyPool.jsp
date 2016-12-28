@@ -25,6 +25,9 @@
 <!-- Custom CSS -->
 <link href="css/simple-sidebar.css" rel="stylesheet">
 
+<!-- Font awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
 
@@ -76,7 +79,8 @@
 						<th>To</th>
 						<th>Via</th>
 						<th>Vehicle</th>
-						<th>Availability</th>				        
+						<th>Availability</th>	
+						<th>Leave Pool</th>			        
 				      </tr>
 			    	</thead>
 			      <tbody>
@@ -102,6 +106,7 @@
 		 	    	 out.println("<td>"+r.getString(5)+"</td>");
 		 	    	 out.println("<td>"+r.getString(6)+"</td>");
 		 	    	 
+		 	    	 
 		 	    	 String vehiclesql="SELECT model FROM carpool_db.vehicles where vid = "+r.getString(7)+";";
 				     PreparedStatement p1=con.prepareStatement(vehiclesql);
 				     ResultSet r1=p1.executeQuery();
@@ -110,7 +115,8 @@
 				     }
 				    
 		 	    	 
-		 	    	 out.println("<td>"+r.getString(8)+"</td> </tr>");
+		 	    	 out.println("<td>"+r.getString(8)+"</td> ");
+		 	    	out.println("<td><a href='/CarPooling/DeletePoolJoined?poolid="+r.getString(2)+"'><i class='fa fa-times' aria-hidden='true'style='color:red;'></i></a></td></tr>");
 			     } 
 	        } catch(NullPointerException n) {
 		   	   n.printStackTrace();
@@ -136,7 +142,8 @@
 						<th>To</th>
 						<th>Via</th>
 						<th>Vehicle</th>
-						<th>Availability</th>				        
+						<th>Availability</th>	
+						<th>Delete Pool</th>				        
 				      </tr>
 			    	</thead>
 			      <tbody>
@@ -150,7 +157,7 @@
 	   	     
 	   	     String username=(String) session.getAttribute("uname");
 	   	  	 System.out.println(username+" username");
-	   		 String sql="SELECT owner, startTime,startFrom,upTo,via,vehicle,availability FROM pools WHERE owner = '"+username+"' ORDER BY availability DESC;";
+	   		 String sql="SELECT owner, startTime,startFrom,upTo,via,vehicle,availability,poolId FROM pools WHERE owner = '"+username+"' ORDER BY availability DESC;";
 		     PreparedStatement p=con.prepareStatement(sql);
 	   	    
 		     ResultSet r=p.executeQuery();
@@ -172,7 +179,8 @@
 				    	 out.println("<td>"+ r1.getString(1)+"</td>");
 				     }
 				    
-		 	    	 out.println("<td>"+r.getString(7)+"</td> </tr>");
+		 	    	 out.println("<td>"+r.getString(7)+"</td> ");
+		 	    	 out.println("<td><a href='/CarPooling/DeletePoolCreated?poolid="+r.getString(8)+"'><i class='fa fa-times' aria-hidden='true'style='color:red;'></i></a></td></tr>");
 			     } 
 	        } catch(NullPointerException n) {
 		   	   n.printStackTrace();
